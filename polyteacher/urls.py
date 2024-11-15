@@ -16,13 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from translator.views import index
+from translator.views import index, contact
+from translator.views import AllTranslation
+# from translator.views import FrenchItalianTranslationViewSet
 from translator.views import FrenchSpanishTranslationViewSet
 from translator.views import FrenchEnglishTranslationViewSet
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
+    path('contact', contact),
+    path('api/all', AllTranslation.as_view()),
+    # path('api/french_italian_translator', FrenchItalianTranslationViewSet.as_view(), name='french_italian_translator'),
     path('api/french_spanish_translator', FrenchSpanishTranslationViewSet.as_view(), name='french_spanish_translator'),
     path('api/french_english_translator', FrenchEnglishTranslationViewSet.as_view(), name='french_english_translator'),
 ]
